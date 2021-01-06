@@ -30,3 +30,10 @@ exports.selectPokemonByBase = (pokemon_base) => {
         return base.rows;
     })
 }
+
+exports.selectDans = (pokemon_owned) => {
+    return client.query(`SELECT * FROM pokemon WHERE pokemon.pokemon_owned = $1`, [pokemon_owned])
+    .then((owned) => {
+        return owned.rows;
+    })
+}
