@@ -1,4 +1,4 @@
-const { selectAllTypes, selectPokemonByType, selectPokemonByLevel } = require('../models/type.models')
+const { selectAllTypes, selectPokemonByType, selectPokemonByLevel, selectPokemonByBase } = require('../models/type.models')
 
 exports.getAllTypes = (req, res, next) => {
     selectAllTypes()
@@ -20,5 +20,13 @@ exports.getPokemonByLevel = (req, res, next) => {
     selectPokemonByLevel(pokemon_level)
     .then((pokemonLevel) => {
         res.send({ pokemonLevel })
+    })
+}
+
+exports.getPokemonByBase = (req, res, next) => {
+    const { pokemon_base } = req.params;
+    selectPokemonByBase(pokemon_base)
+    .then((base) => {
+        res.send({ base })
     })
 }

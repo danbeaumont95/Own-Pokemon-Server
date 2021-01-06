@@ -23,3 +23,10 @@ exports.selectPokemonByLevel = (pokemon_level) => {
         return pokemonLevel.rows;
     })
 }
+
+exports.selectPokemonByBase = (pokemon_base) => {
+    return client.query(`SELECT * FROM pokemon WHERE pokemon.pokemon_base = $1`, [pokemon_base])
+    .then((base) => {
+        return base.rows;
+    })
+}
